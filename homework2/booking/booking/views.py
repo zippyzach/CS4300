@@ -7,6 +7,7 @@ from django.shortcuts import render, get_object_or_404
 
 
 #view sets for API
+
 #movie view set
 class M_View_Set(viewsets.ModelViewSet):
     
@@ -33,7 +34,7 @@ def movie_list(request):
     
     return render(request, 'booking/movie_list.html', {'movies': m_list})
     
-def seat_booking(request):
+def seat_booking(request, movie_id):
     movie = get_object_or_404(Movie, id=movie_id)
     s_list = Seat.objects.all()
     
