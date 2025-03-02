@@ -1,4 +1,4 @@
-#Zachary Donnelly - CS4300
+#Zachary Donnelly - CS4300 HW2
 
 from rest_framework import viewsets
 from .models import Movie, Seat, Booking
