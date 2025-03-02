@@ -21,6 +21,7 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import M_View_Set, S_View_Set, B_View_Set
 from . import views
+from django.contrib.auth import views as auth_views
 
 
 #setting up default router
@@ -36,5 +37,8 @@ urlpatterns = [
     #API endpoint
     path('api/', include(r.urls)),
     
+    #html paths
     path('movie_list/', views.movie_list, name='movie_list'),
+    path('seat_booking/', views.seat_booking, name='seat_booking'),
+    path('booking_history/', views.booking_history, name ='booking_history'),
 ]
