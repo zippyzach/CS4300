@@ -2,18 +2,21 @@
 from rest_framework import serializers
 from .models import Movie, Seat, Booking
 
-class M_serializer(serializers.ModleSerializer):
+#movie serializer
+class M_Serializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
         fields = '__all__'
  
- 
- class S_Serializer(serializers.ModleSerializer):
+#seat serializer
+class S_Serializer(serializers.ModelSerializer):
     class Meta:
         model = Seat
         fields = '__all__'
 
-class B_Serializer(serializers.ModleSerializer):
+#booking serializer
+class B_Serializer(serializers.ModelSerializer):
     class Meta:
         model = Booking
         fields = '__all__'
+    

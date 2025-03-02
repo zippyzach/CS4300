@@ -17,20 +17,24 @@ Including another URLconf
 
 #Zachary Donnelly - CS4300 HW2
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import M_View_Set, S_View_Set, B_View_Set
+from . import views
 
 
 #setting up default router
 r = DefaultRouter()
 
-#registering view sets
-r.register(r'Movies", M_View_Set)
+#registering view sets for endpoint
+r.register(r'Movies', M_View_Set)
 r.register(r'Seats', S_View_Set)
 r.register(r'Bookings', B_View_Set)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #API endpoint
     path('api/', include(r.urls)),
+    
+    path('movie_list/', views.movie_list, name='movie_list'),
 ]
