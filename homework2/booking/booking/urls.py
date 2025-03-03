@@ -39,6 +39,6 @@ urlpatterns = [
     
     #html paths
     path('movie_list/', views.movie_list, name='movie_list'),
-    path('seat_booking/', views.seat_booking, name='seat_booking'),
+    path('seat_booking/<int:movie_id>/', views.seat_booking, name='seat_booking'),
     path('booking_history/', views.booking_history, name ='booking_history'),
 ]

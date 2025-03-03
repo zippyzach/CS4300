@@ -20,10 +20,11 @@ class Movie(models.Model):
 
 class Seat(models.Model):
 
+    movie = models.ForeignKey(Movie, related_name='seats', on_delete=models.CASCADE, default=1)
     #using char field to allow for sections and number sequences
     number = models.CharField(max_length=5)
     #bool to check if booked or not, not booked(false) by default
-    status = models.BooleanField(default = False)
+    booked_status = models.BooleanField(default = False)
 
 
     def __str__(self):

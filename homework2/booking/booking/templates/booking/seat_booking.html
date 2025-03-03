@@ -1,0 +1,36 @@
+<!-- Zachary Donnelly - CS4300 HW2 -->
+{% extends 'booking/base.html' %}
+
+{% block title %} Book Seats for {{ movie.title }} {% endblock %}
+
+{% block content %}
+<h2>Select a Seat for {{ movie.title }}</h2>
+
+<!-- Display success or failure messages -->
+{% if messages %}
+    <div class="alert alert-info" role="alert">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<div class="list-group">
+    {% for seat in seats %}
+        <div class="list-group-item">
+            <p>Seat: {{ seat.number }} - {% if seat.booked_status %}Booked{% else %}Available{% endif %}</p>
+            {% if not seat.booked_status %}
+                <!-- Booking form for available seats -->
+                <form method="post" action="{% url 'seat_booking' movie.id %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="seat_id" value="{{ seat.id }}">
+                    <button type="submit" class="btn btn-primary">Book Now</button>
+                </form>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>No seats available for this movie.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}
