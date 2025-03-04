@@ -50,7 +50,25 @@ class SeatTest(TestCase):
         self.assertEqual(seat.movie.title, "Test Movie")
         self.assertEqual(seat.number, "A1")
         self.assertFalse(seat.booked_status)
-    
+            
+class SeatAPITest(TestCase):
+    def setUp(self):
+        self.user = User.objects.create_user(username='test user', password='test_password')
+        self.client = APIClient()
+        self.movie = Movie.objects.create(title="Test Movie", description="a test movie",date=date(2020,2,2), duration=timedelta(hours=2,minutes=2))
+        
+        
+        
+    def test_create(self):
+        url = '/api/Seats/'
+        data = {
+            'movie': self.movie.id,
+            'number': 'A1',
+            'booked_status': False
+        }
+        response = self.client.post(url, data, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        
 #tests that booking is created properly and all parts of the model are populated as expected through assertations
 #tests model and API endpoints
 class BookingTest(TestCase):
@@ -65,3 +83,22 @@ class BookingTest(TestCase):
          self.assertEqual(booking.movie_title.title, "Test Movie")
          self.assertEqual(booking.seat.number, "A1")
          self.assertEqual(booking.user.username, "test_user_1")
+
+class BookingAPITest(TestCase):
+        def setUp(self):
+            self.user = User.objects.create_user(username='test user', password='test_password')
+            self.client = APIClient()
+            self.movie = Movie.objects.create(title="Test Movie", description="a test movie",date=date(2020,2,2), duration=timedelta(hours=2,minutes=2))
+            
+            self.seat = Seat.objects.create(movie=self.movie, number = "A1",booked_status=False)
+            
+        def test_create(self):
+            url = '/api/Bookings/'
+            data = {
+                'movie_title': self.movie.id,
+                'seat': self.seat.id,
+                'user': self.user.id
+            }
+            
+            response = self.client.post(url, data, format='json')
+            self.assertEqual(response.status_code, status.HTTP_201_CREATED)

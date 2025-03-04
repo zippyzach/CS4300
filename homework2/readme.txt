@@ -23,7 +23,8 @@ seat_booking.html - holds the seats for a given movie and allows them to be rese
 booking_history.html - holds booking history for a current user
 tests.py - holds the tests for models and API endpoints
 
-
+to run tests - 6 in all, 3 for html views and 3 for api endpoints
+py manage.py test
 
 A default test user is automatically logged in for testing purposes named "test user" due to timing constraints on implementing a full authentication ability.
 If this user is not set up here are the steps:
