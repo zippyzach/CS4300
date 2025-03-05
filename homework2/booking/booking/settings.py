@@ -133,6 +133,8 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+DEBUG = False
+
 CORS_ALLOWED_ORIGINS = [
     'https://cs4300-ch03.onrender.com',  # Allow your frontend to access API
 ]

@@ -52,3 +52,5 @@ api Root:
 https://cs4300-ch03.onrender.com/api/
 
 all API's can be accessed from this page
+
+******* WARNING - Render is not loading my CSS and JS properly so my api is not rendering but functionality is still there.
