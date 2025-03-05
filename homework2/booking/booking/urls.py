@@ -22,6 +22,8 @@ from rest_framework.routers import DefaultRouter
 from .views import M_View_Set, S_View_Set, B_View_Set
 from . import views
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 #setting up default router
@@ -43,3 +45,6 @@ urlpatterns = [
     path('booking_history/', views.booking_history, name ='booking_history'),
     path('',views.movie_list, name='home'),
 ]
+
+if not settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -31,7 +31,6 @@ class B_View_Set(viewsets.ModelViewSet):
 
 def movie_list(request):
     m_list = Movie.objects.all()
-    print(m_list)
     
     return render(request, 'booking/movie_list.html', {'movies': m_list})
     

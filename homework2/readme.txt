@@ -1,12 +1,15 @@
 Zachary Donnelly - CS4300 HW2
 Readme.txt
 
-to Run:
+to Run Locally:
 while in directory containing manage.py
 py manage.py runserver
 
 go to url http://127.0.0.1:8000/movie_list/
 from here click a movie to view seats, book seats and view booking history
+
+***Now hosted on render
+URL: https://cs4300-ch03.onrender.com/
 
 
 relevant files:
@@ -45,11 +48,7 @@ exit()
 
 APIs can be accessed for movies, book seats, and check booking history - CRUD functionality through REST framework is available
 
-add movies:
-http://127.0.0.1:8000/api/Movies/
+api Root:
+https://cs4300-ch03.onrender.com/api/
 
-add ID # to url ie: /Movies/(id here)/ for update, delete and read
-book seats:
-http://127.0.0.1:8000/api/Bookings/
-booking history:
-http://127.0.0.1:8000/api/Bookings/
+all API's can be accessed from this page
